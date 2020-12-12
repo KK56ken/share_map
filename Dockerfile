@@ -5,4 +5,6 @@ RUN pip install tornado
 
 ADD . /app
 
-WORKDIR /app
+WORKDIR /app/app
+
+CMD ["python","server.py"]
