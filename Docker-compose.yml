@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    container_name: share_map_app
+    ports:
+      - 80:8888
+    volumes:
+      - ./app:/app
+    working_dir: /app
+  mysql:
+    image: mysql:5.7
+    container_name: share_map_db
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123
