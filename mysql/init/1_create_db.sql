@@ -1,0 +1,3 @@
+  
+DROP SCHEMA IF EXISTS share_map;
+CREATE DATABASE IF NOT EXISTS share_map;
