@@ -6,12 +6,12 @@ import folium
 
 class MainHandler(tornado.web.RequestHandler):
   def get(self):
-    self.render("tokyo.html")
+    self.render("index.html")
 
 application = tornado.web.Application([
   (r"/",MainHandler),
 ],
-  template_path=os.path.join(os.getcwd(),"templates")
+  template_path=os.path.join(os.getcwd(),"view")
 )
 
 def create_map():
