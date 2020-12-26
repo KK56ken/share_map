@@ -12,7 +12,8 @@ class MainHandler(tornado.web.RequestHandler):
 application = tornado.web.Application([
   (r"/",MainHandler),
 ],
-  template_path=os.path.join(os.getcwd(),"view")
+  template_path=os.path.join(os.getcwd(), "view"),
+  static_path=os.path.join(os.getcwd(), "script"),
 )
 
 def create_map():
