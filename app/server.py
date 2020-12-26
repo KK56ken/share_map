@@ -3,6 +3,7 @@ import tornado.web
 import os
 import sys
 import folium
+from model.group import group
 
 class MainHandler(tornado.web.RequestHandler):
   def get(self):
@@ -20,6 +21,11 @@ def create_map():
   tokyo.save('../app/templates/tokyo.html')
 
 if __name__ == "__main__":
-  create_map()
-  application.listen(8888)
-  tornado.ioloop.IOLoop.instance().start()
+  args = sys.argv
+  if len(args) > 1:
+    if args[1] == "migrate":
+      group.migrate()
+  else:
+    create_map()
+    application.listen(8888)
+    tornado.ioloop.IOLoop.instance().start()
