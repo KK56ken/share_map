@@ -12,11 +12,16 @@
     <!-- [endif] -->
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBADe500Qkz4TCvVbOC34-20AanN8i45R0">
     </script>
-    <script type="text/javascript" src="{{ static_url('sample.js') }}">
+    <script type="text/javascript" src="{{ static_url('script/sample.js') }}">
     </script>
+    <link rel="stylesheet" href="{{static_url('css/style.css')}}">
   </head>
   <body>
-    <div id="map" style="width:1900px; height:900px;">
+    <div id="map">
     </div>
+    <ul>
+      <li>lat:<span id="lat"></span></li>
+      <li>lng:<span id="lng"></span></li>
+    </ul>
   </body>
 </html>
