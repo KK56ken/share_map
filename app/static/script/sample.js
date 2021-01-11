@@ -7,11 +7,42 @@ function initMap() {
   };
   map = new google.maps.Map(document.getElementById('map'), opts);
 
+  //ボタンの追加
+  var ingressButtonDiv = document.createElement("div");
+  var ingressButton = new ingressControl(ingressButtonDiv, map);
+
+  ingressButtonDiv.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(ingressButtonDiv);
+
   //クリックイベントを追加
   map.addListener('click', function (e) {
     getClickLatLng(e.latLng, map)
   });
-  // return map;
+}
+
+function ingressControl(buttonDiv, map) {
+  var buttonUI = document.createElement("div");
+
+    buttonUI.style.backgroundColor = "rgb(0, 79, 74)";
+    buttonUI.style.border = "1px solid #59fbea";
+    buttonUI.style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 1px 4px -1px";
+    buttonUI.style.cursor = "pointer";
+    buttonUI.style.padding = "1px 6px";
+
+    buttonUI.style.color = "#59fbea";
+    buttonUI.style.fontFamily = "Coda, Arial,sans-serif";
+    buttonUI.style.fontSize = "15px";
+    buttonUI.style.textAlign = "center";
+
+    buttonUI.title = "Dive google";
+    buttonUI.innerHTML = "Dive google";
+
+    buttonDiv.style.padding = "5px";
+    buttonDiv.appendChild(buttonUI);
+
+    google.maps.event.addDomListener(buttonUI, "click", function() {
+      window.open("https://www.google.com");
+    });
 }
 
 function getClickLatLng(lat_lng, map) {

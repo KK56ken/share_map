@@ -4,6 +4,8 @@ import os
 import sys
 import folium
 from model.group import group
+from model.pin import pin
+
 
 class MainHandler(tornado.web.RequestHandler):
   def get(self):
@@ -26,6 +28,7 @@ if __name__ == "__main__":
   if len(args) > 1:
     if args[1] == "migrate":
       group.migrate()
+      pin.migrate()
   else:
     # create_map()
     application.listen(8888)
