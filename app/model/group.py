@@ -21,12 +21,12 @@ class group:
       # テーブル初期化(CREATE)
       cursor.execute("""
           CREATE TABLE `group` (
-                    `group_id` int(100) unsigned NOT NULL AUTO_INCREMENT,
+                    `group_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
                     `group_pass` varchar(255) NOT NULL DEFAULT '',
                     PRIMARY KEY (`group_id`)
           ); """)
       cursor.execute("""
-        INSERT INTO `group` (group_pass) VALUES ('abulkjdf')
+        INSERT INTO `group` (group_pass) VALUES ('abulkjdf');
       """)
       con.commit()
 
