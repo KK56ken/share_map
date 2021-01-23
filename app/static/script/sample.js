@@ -1,4 +1,5 @@
 var map
+var url
 
 function initMap() {
   var opts = {
@@ -20,29 +21,53 @@ function initMap() {
   });
 }
 
+function createHash() {
+  var num = "http://localhost?url="+Math.floor(Math.random() * Math.floor(10000));
+  return num
+}
+
 function ingressControl(buttonDiv, map) {
   var buttonUI = document.createElement("div");
 
-    buttonUI.style.backgroundColor = "rgb(0, 79, 74)";
-    buttonUI.style.border = "1px solid #59fbea";
-    buttonUI.style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 1px 4px -1px";
-    buttonUI.style.cursor = "pointer";
-    buttonUI.style.padding = "1px 6px";
+  buttonUI.setAttribute("id", "share");
 
-    buttonUI.style.color = "#59fbea";
-    buttonUI.style.fontFamily = "Coda, Arial,sans-serif";
-    buttonUI.style.fontSize = "15px";
-    buttonUI.style.textAlign = "center";
+  buttonUI.style.backgroundColor = "white";
+  buttonUI.style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 1px 4px -1px";
+  buttonUI.style.cursor = "pointer";
+  buttonUI.style.padding = "1px 6px";
 
-    buttonUI.title = "Dive google";
-    buttonUI.innerHTML = "Dive google";
+  buttonUI.style.color = "black";
+  buttonUI.style.fontSize = "30px";
+  buttonUI.style.textAlign = "center";
 
-    buttonDiv.style.padding = "5px";
-    buttonDiv.appendChild(buttonUI);
+  buttonUI.title = "Share";
+  buttonUI.innerHTML = "Share";
 
-    google.maps.event.addDomListener(buttonUI, "click", function() {
-      window.open("https://www.google.com");
+  buttonDiv.style.padding = "5px";
+  buttonDiv.appendChild(buttonUI);
+
+  google.maps.event.addDomListener(buttonUI, "click", function () {
+
+    const close = document.getElementById('close');
+    const modal = document.getElementById('modal');
+    const mask = document.getElementById('mask');
+
+    document.getElementById("url").textContent = url;
+
+    modal.classList.remove('hidden');
+    mask.classList.remove('hidden');
+
+    close.addEventListener('click', function () {
+      modal.classList.add('hidden');
+      mask.classList.add('hidden');
     });
+    mask.addEventListener('click', function () {
+      modal.classList.add('hidden');
+      mask.classList.add('hidden');
+    });
+
+
+  });
 }
 
 function getClickLatLng(lat_lng, map) {
@@ -62,6 +87,18 @@ function getClickLatLng(lat_lng, map) {
 
 }
 
+function copyUrl() {
+  const element = document.createElement('input');
+  element.value = url;
+  document.body.appendChild(element);
+  element.select();
+  document.execCommand('copy');
+  document.body.removeChild(element);
+}
+
 window.onload = function () {
   initMap()
+  url = createHash()
 }
+
+

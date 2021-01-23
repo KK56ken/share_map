@@ -7,6 +7,9 @@ html, body {
   height: 100%;
   width: 100%;
 }
+#url{
+  text-align:center;
+}
 .btn-flat-vertical-border {
   position: relative;
   display: inline-block;
@@ -18,4 +21,71 @@ html, body {
   color: #668ad8;
   background: #e1f3ff;
   transition: .4s;
+}
+#share{
+  opacity: 1;
+}
+#share:hover{
+  opacity: 0.5;
+}
+
+#open,
+#close {
+  cursor: pointer;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  padding: 12px;
+  margin: 16px auto 0;
+  background: #4caf50;
+  color: white;
+}
+
+#mask {
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#modal {
+  background: #fff;
+  color: #555;
+  width: 500px;
+  padding: 40px;
+  border-radius: 4px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 2;
+  transition: 0.4s;
+}
+
+#modal p {
+  margin: 0 0 20px;
+}
+
+#mask.hidden {
+  display: none;
+}
+
+#modal.hidden {
+  transform: translate(0, -500px);
+}
+
+.btn{
+  cursor: pointer;
+  width: 100px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  padding-left: 10px;
+  background: #4caf50;
+  color: white;
 }

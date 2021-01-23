@@ -19,6 +19,14 @@
   <body>
     <div id="map" class="map">
     </div>
+    <div id="mask" class="hidden"></div>
+      <section id="modal" class="hidden">
+      <span id="url"></span>
+      <button class="btn" onclick="copyUrl()">Copy URL</button>
+      <div id="close">
+        閉じる
+      </div>
+  </section>
     <ul>
       <li>lat:<span id="lat"></span></li>
       <li>lng:<span id="lng"></span></li>
