@@ -5,6 +5,7 @@ import sys
 import folium
 from model.group import group
 from model.pin import pin
+from controller.AsyncHandler import AsyncHandler
 
 class MainHandler(tornado.web.RequestHandler):
   def get(self):
@@ -12,6 +13,7 @@ class MainHandler(tornado.web.RequestHandler):
 
 application = tornado.web.Application([
   (r"/",MainHandler),
+  (r"/async", AsyncHandler),
 ],
   template_path=os.path.join(os.getcwd(), "view"),
   static_path=os.path.join(os.getcwd(), "script"),
