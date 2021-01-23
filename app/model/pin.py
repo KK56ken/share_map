@@ -26,13 +26,13 @@ class pin:
                     `pin_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
                     `group_id` int(11) unsigned NOT NULL,
                     `latitude` double(3, 1) NOT NULL,
-                    `longitude` double(3, 1) NOT NULL,
+                    `longitude` double(4, 1) NOT NULL,
                     PRIMARY KEY (`pin_id`)
           );""")
       #確認用ピンデータ追加
       cursor.execute("""
-        INSERT INTO `pin` (group_id, latitude, longitude) VALUES (1, 35.4122, 139.4130);
-      """)
+        INSERT INTO `pin` (group_id, latitude, longitude) VALUES(1, 35.4122, 139.4130) """)
+
       con.commit()
 
   @staticmethod
@@ -40,5 +40,3 @@ class pin:
       with DBConnector(dbName=None) as con, con.cursor() as cursor:
           cursor.execute('DROP DATABASE IF EXISTS %s;' % project.name())
           con.commit()
-
-
